@@ -18,7 +18,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
@@ -143,10 +142,10 @@ public class StartActivity_Schedual_Planner extends AppCompatActivity {
                                                 } else // if this is a tablet with linearLayout
                                                 {
                                                     // added in ID for linear layout
-                                                    View linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
-                                                    Snackbar snackbar = Snackbar
-                                                            .make(linearLayout, "There is no course at this time slot.", Snackbar.LENGTH_SHORT);
-                                                    snackbar.show();
+                                                   // View linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
+                                                   // Snackbar snackbar = Snackbar
+                                                     //       .make(linearLayout, "There is no course at this time slot.", Snackbar.LENGTH_SHORT);
+                                                   // snackbar.show();
                                                 }
                                             }
                                             // }

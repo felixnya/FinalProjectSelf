@@ -73,6 +73,7 @@
 
                                 android:id="@+id/button00"
                                 android:background="@drawable/algonquin_schedual_planner"
+
                                 />
 
                             <Button android:textSize="14dp"

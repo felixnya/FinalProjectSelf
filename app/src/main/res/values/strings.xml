@@ -1,4 +1,5 @@
 <resources>
+    <!-- Robert Jackson's strings -->
     <string name="app_name">FinalProject</string>
     <string name="ProjectForm">Project Form</string>
     <string name="StudentForm">Student Form</string>
@@ -15,7 +16,7 @@
     <string name="sHint2">FirstName</string>
     <string name="sHint3">LastName</string>
 
-
+<!-- Tony's strings -->
 
     <string name="app_name2">Algonguin TimeSchedule</string>
     <string name="mon">MON</string>

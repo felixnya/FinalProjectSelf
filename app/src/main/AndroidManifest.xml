@@ -18,10 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StartActivity_Schedual_Planner" />
+        <activity android:name=".StartActivity_Schedual_Planner"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <fragment android:name=".InputActivity_Schedual_Planner" />
         <activity android:name=".ListViewActivity_Schedual_Planner" />
-        <activity android:name=".InputFragmentHolder"></activity>
+        <activity android:name=".InputFragmentHolder_Schedual_Planner"></activity>
         <activity
             android:name=".ProjectFormActivity_Project_Planner"
             android:label="Test"
