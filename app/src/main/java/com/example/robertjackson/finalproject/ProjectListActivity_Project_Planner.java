@@ -34,7 +34,7 @@ import java.util.List;
 
 /**
  * Created by Robert Jackson on Nov 24 2016.
- * ProjectListActivity.java
+ * ProjectListActivity_Project_Planner.java
  */
 
 /**
@@ -42,7 +42,7 @@ import java.util.List;
  * @return void
  * Main class for project list activity
  */
-public class ProjectListActivity extends AppCompatActivity {
+public class ProjectListActivity_Project_Planner extends AppCompatActivity {
     ExpandableListView expandableListView;
     ExpandableListAdapter adapter;
     View mainView;
@@ -56,7 +56,7 @@ public class ProjectListActivity extends AppCompatActivity {
     Cursor projectCursor;
     Cursor studentCursor;
     Context ctx = this;
-    Database tempDb = new Database(ctx);
+    Database_Project_Planner tempDb = new Database_Project_Planner(ctx);
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     boolean exists;
@@ -72,7 +72,7 @@ public class ProjectListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_project_planner);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Project Manager");
         setSupportActionBar(toolbar);
@@ -90,7 +90,7 @@ public class ProjectListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent ffs = new Intent(getApplicationContext(), ProjectFormActivity.class);
+                    Intent ffs = new Intent(getApplicationContext(), ProjectFormActivity_Project_Planner.class);
                     startActivity(ffs);
                     editor = sharedPreferences.edit().putBoolean("exists", true);
                     editor.apply();
@@ -104,7 +104,7 @@ public class ProjectListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent ffs = new Intent(getApplicationContext(), StudentFormActivity.class);
+                    Intent ffs = new Intent(getApplicationContext(), StudentFormActivity_Project_Planner.class);
                     startActivity(ffs);
                 } catch (Exception e) {
                     Log.e("Exception Occurred ", e.toString());
@@ -148,13 +148,13 @@ public class ProjectListActivity extends AppCompatActivity {
     /**
      * @param m
      * @return boolean
-     * on create options menu used to inflate the toolbar
+     * on create options menu_schedual_planner used to inflate the toolbar
      * @name onCreateOptionsMenu
      */
     /* ----------------------------------------------------------------------------------------------*/
     public boolean onCreateOptionsMenu(Menu m) {
         try {
-            getMenuInflater().inflate(R.menu.toolbar_menu, m);
+            getMenuInflater().inflate(R.menu.toolbar_menu_project_planner, m);
             return true;
         } catch (Exception e) {
             Log.e("Exception Occurred ", e.toString());
@@ -176,16 +176,13 @@ public class ProjectListActivity extends AppCompatActivity {
 
             switch (id) {
                 case R.id.action_one:
-                    Toast.makeText(ProjectListActivity.this,
-                            "Main Menu back button",
-                            Toast.LENGTH_SHORT).show();
-
+                    finish();
                     break;
                 case R.id.about:
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     LayoutInflater inflater = this.getLayoutInflater();
-                    mainView = inflater.inflate(R.layout.dialog_box, null);
+                    mainView = inflater.inflate(R.layout.dialog_box_project_planner, null);
                     builder.setView(mainView);
                     EditText et = (EditText) mainView.findViewById(R.id.dialogboxText);
                     et.setText("Fills Expandable listView with projects currently in the database." +
@@ -239,7 +236,7 @@ public class ProjectListActivity extends AppCompatActivity {
                     studentList.add(addListToArray());
 
                     Calendar c = Calendar.getInstance();
-                    String endDate = projectCursor.getString(3);
+
                     String[] e = projectCursor.getString(3).split("/");
 
 
@@ -261,9 +258,6 @@ public class ProjectListActivity extends AppCompatActivity {
                     studentCursor = tempDb.getStudentInfo(tempDb);
                     studentCursor.moveToFirst();
                     do {
-                        if (studentCursor.isNull(1)) {
-                            break;
-                        }
                         if (studentCursor.getString(0).equals(projectCursor.getString(0))) {
                             studentList.get(iterator).add("First Name: " + studentCursor.getString(1) + "\t\t\tLast Name: " + studentCursor.getString(2));
                         }
@@ -278,7 +272,7 @@ public class ProjectListActivity extends AppCompatActivity {
             }
 
 
-            adapter = new ExpandableListAdapter(ProjectListActivity.this, project, hashMap);
+            adapter = new ExpandableListAdapter(ProjectListActivity_Project_Planner.this, project, hashMap);
             expandableListView.setAdapter(adapter);
         } catch (Exception e) {
             Log.e("Exception Occurred ", e.toString());
@@ -314,10 +308,19 @@ public class ProjectListActivity extends AppCompatActivity {
                 @Override
                 public boolean onGroupClick(ExpandableListView listview, View view,
                                             int group_pos, long id) {
-                    Toast.makeText(ProjectListActivity.this,
-                            adapter.getGroup(group_pos).toString(),
-                            Toast.LENGTH_SHORT).show();
-                    return false;
+                    if (studentList.get(group_pos).size() == 0) {
+                        Toast.makeText(ProjectListActivity_Project_Planner.this,
+                                "Not currently Filled",
+                                Toast.LENGTH_LONG).show();
+                        return true;
+                    } else {
+                        Toast.makeText(ProjectListActivity_Project_Planner.this,
+                                adapter.getGroup(group_pos).toString(),
+                                Toast.LENGTH_SHORT).show();
+
+
+                        return false;
+                    }
                 }
             });
             expandableListView.setOnChildClickListener(new OnChildClickListener() {
@@ -326,7 +329,7 @@ public class ProjectListActivity extends AppCompatActivity {
                 public boolean onChildClick(ExpandableListView listview, View view,
                                             int groupPos, int childPos, long id) {
                     Toast.makeText(
-                            ProjectListActivity.this,
+                            ProjectListActivity_Project_Planner.this,
                             "" + adapter.getChild(groupPos, childPos),
                             Toast.LENGTH_SHORT).show();
                     return false;
@@ -413,7 +416,7 @@ public class ProjectListActivity extends AppCompatActivity {
                 if (convertView == null) {
                     LayoutInflater infalInflater = (LayoutInflater) this._context
                             .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    convertView = infalInflater.inflate(R.layout.child_student, parent, false);
+                    convertView = infalInflater.inflate(R.layout.child_student_project_planner, parent, false);
                 }
 
                 TextView child_text = (TextView) convertView.findViewById(R.id.child);
@@ -509,7 +512,7 @@ public class ProjectListActivity extends AppCompatActivity {
                 if (convertView == null) {
                     LayoutInflater infalInflater = (LayoutInflater) this._context
                             .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    convertView = infalInflater.inflate(R.layout.header_project, parent, false);
+                    convertView = infalInflater.inflate(R.layout.header_project_project_planner, parent, false);
                 }
                 TextView header_text = (TextView) convertView.findViewById(R.id.header);
                 header_text.setText(headerTitle);

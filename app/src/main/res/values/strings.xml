@@ -15,4 +15,58 @@
     <string name="sHint2">FirstName</string>
     <string name="sHint3">LastName</string>
 
+
+
+    <string name="app_name2">Algonguin TimeSchedule</string>
+    <string name="mon">MON</string>
+    <string name="tue">TUE</string>
+    <string name="wed">WED</string>
+    <string name="thu">THU</string>
+    <string name="fri">FRI</string>
+    <string name="day">DAY     :</string>
+    <string name="startat">START AT:</string>
+
+    <string name="howlong">Choose how long does this course take::</string>
+    <string name="onehour">1 hour</string>
+    <string name="twohour">2 hours</string>
+
+
+    <string name="coursecode">Please Input the course code:</string>
+    <string name="coursename">Please Input the course name: </string>
+    <string name="classroom">Please Input the class room: </string>
+    <string name="professor">Please Input professor name: </string>
+    <string name="addedit">Add/Edit a course</string>
+    <string name="delete">Delete</string>
+    <string name="rtn">Return</string>
+
+
+
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
+
+    <string name="author">Author name</string>
+    <string name="version">Verison number</string>
+    <string name="instruction">App Instruction</string>
+
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+
+    <string name="code">Course Code : </string>
+    <string name="name">Course Name : </string>
+    <string name="locatoin">Location  :</string>
+    <string name="instructor">Instructor :</string>
+
+    <string name="instru">"                     Instructions:
+        1. double Click the time slot and add/edit/delete the course, single click course to show the details with toast\n
+        2. click the left top AC logo to see the time menu in the expandable list view.\n
+        3. double click the list item to add/edit/delete course. From List, click the logo to go back to the time table.\n\n
+            Written by Tongyu Wang\n
+            CST2355 Final Project\n
+            Time Schedule Version 1</string>
+
+
 </resources>
+

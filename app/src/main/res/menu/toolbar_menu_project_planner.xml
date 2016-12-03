@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/action_one"
-        android:icon="@drawable/back"
+        android:icon="@drawable/back_project_planner"
         android:orderInCategory="101"
         android:title="One"
         app:showAsAction="always" />
@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/about"
-        android:icon="@drawable/info"
+        android:icon="@drawable/info_project_planner"
         android:orderInCategory="103"
         android:title="About"
         app:showAsAction="always" />

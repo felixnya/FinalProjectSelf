@@ -9,7 +9,7 @@
         android:background="?attr/colorAccent"
         android:contentDescription="@string/app_name"
         android:scaleType="center"
-        android:src="@drawable/info" />
+        android:src="@drawable/info_project_planner" />
 
 
     <EditText

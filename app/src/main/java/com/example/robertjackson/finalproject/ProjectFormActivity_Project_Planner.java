@@ -19,49 +19,50 @@ import android.widget.Toast;
 
 /**
  * Created by Robert Jackson on Nov 24 2016.
- * StudentFormActivity.java
+ * ProjectFormActivity.java
  */
 
 /**
- * @name StudentFormActivity
+ * @name ProjectFormActivity
  * @return void
- * Student form activity
+ * Activity for project input form
  */
-public class StudentFormActivity extends AppCompatActivity {
-    private View studentView;
+public class ProjectFormActivity_Project_Planner extends AppCompatActivity {
+    private View projectView;
     private Context ctx = this;
-    private Database tempDb = new Database(ctx);
-
-
-    private EditText et1, et2, et3;
-    private Button b1, b2;
+    private Database_Project_Planner tempDb = new Database_Project_Planner(ctx);
+    private EditText et1;
+    private EditText et2;
+    private EditText et3;
+    private EditText et4;
 
     /**
      * @param savedInstanceState
      * @return void
-     * on create for student activity, used to setcontent view with layout, and to
-     * place buttons and edit text fields, button takes information from all fields, and then
-     * places them in the database.
+     * On creation of activity sets content view including edit fields and buttons
+     * on button click it takes all the items in each edit field and inserts it into a database
      * @name onCreate
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_form);
+        setContentView(R.layout.activity_project_form_project_planner);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Student Form");
+        toolbar.setTitle("Project Form");
         setSupportActionBar(toolbar);
 
-        b1 = (Button) findViewById(R.id.studentButton);
-        b2 = (Button) findViewById(R.id.studentButton2);
+        Button b1 = (Button) findViewById(R.id.projectFormButton1);
+        Button b2 = (Button) findViewById(R.id.projectFormButton2);
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    et1 = (EditText) findViewById(R.id.sEt1);
-                    et2 = (EditText) findViewById(R.id.sEt2);
-                    et3 = (EditText) findViewById(R.id.sEt3);
+                    et1 = (EditText) findViewById(R.id.pEt1);
+                    et2 = (EditText) findViewById(R.id.pEt2);
+                    et3 = (EditText) findViewById(R.id.pEt3);
+                    et4 = (EditText) findViewById(R.id.pEt4);
                     if (et1.getText().toString().equals("")) {
                         et1.setError("This field can not be blank");
                         return;
@@ -72,23 +73,12 @@ public class StudentFormActivity extends AppCompatActivity {
                     } else if (et3.getText().toString().equals("")) {
                         et3.setError("This field can not be blank");
                         return;
-                    }
-
-                    for (char c2 : et2.getText().toString().toCharArray()) {
-                        if (Character.isDigit(c2)) {
-                            et2.setError("This field can not have a numeric");
-                            et2.setFocusable(true);
-                            return;
-                        }
-                    }
-                    for (char c3 : et3.getText().toString().toCharArray()) {
-                        if (Character.isDigit(c3)) {
-                            et3.setError("This field can not have a numeric");
-                            return;
-                        }
+                    } else if (et4.getText().toString().equals("")) {
+                        et4.setError("This field can not be blank");
+                        return;
                     }
                     insertQuery iq = new insertQuery();
-                    iq.execute(et1.getText().toString(), et2.getText().toString(), et3.getText().toString());
+                    iq.execute(et1.getText().toString(), et2.getText().toString(), et3.getText().toString(), et4.getText().toString());
                 } catch (Exception e) {
                     Log.e("Exception Occurred ", e.toString());
                 }
@@ -100,45 +90,31 @@ public class StudentFormActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    et1 = (EditText) findViewById(R.id.sEt1);
+                    et1 = (EditText) findViewById(R.id.pEt1);
                     if (et1.getText().toString().equals("")) {
                         et1.setError("This field can not be blank");
                         return;
                     }
 
-                    for (char c2 : et2.getText().toString().toCharArray()) {
-                        if (Character.isDigit(c2)) {
-                            et2.setError("This field can not have a numeric");
-                            et2.setFocusable(true);
-                            return;
-                        }
-                    }
-                    for (char c3 : et3.getText().toString().toCharArray()) {
-                        if (Character.isDigit(c3)) {
-                            et3.setError("This field can not have a numeric");
-                            return;
-                        }
-                    }
                     deleteQuery dq = new deleteQuery();
                     dq.execute(et1.getText().toString());
                 } catch (Exception e) {
                     Log.e("Exception Occurred ", e.toString());
                 }
+
             }
         });
-
     }
 
     /**
      * @param m
      * @return boolean
-     * inflates the toolbar menu
+     * Inflates toolbar
      * @name onCreateOptionsMenu
      */
-
     public boolean onCreateOptionsMenu(Menu m) {
         try {
-            getMenuInflater().inflate(R.menu.toolbar_menu, m);
+            getMenuInflater().inflate(R.menu.toolbar_menu_project_planner, m);
             return true;
         } catch (Exception e) {
             Log.e("Exception Occurred ", e.toString());
@@ -149,7 +125,7 @@ public class StudentFormActivity extends AppCompatActivity {
     /**
      * @param mi
      * @return boolean
-     * Inflates layout based on option selected for a menu, for example, inflates an
+     * Inflates layout based on option selected for a menu_schedual_planner, for example, inflates an
      * about alert box for when the about item is selected.
      * @name onOptionsItemSelected
      */
@@ -165,18 +141,15 @@ public class StudentFormActivity extends AppCompatActivity {
                 case R.id.about:
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     LayoutInflater inflater = this.getLayoutInflater();
-                    studentView = inflater.inflate(R.layout.dialog_box, null);
-
-                    builder.setView(studentView);
-                    EditText et = (EditText) studentView.findViewById(R.id.dialogboxText);
-                    et.setText("StudentFormActivity. It is an activity with 3 edit text fields. Each of these fields has error checking" +
-                            "that you must have a string, not an empty one. As well as a non numeric for your names." +
-                            "With that being said, enter in the information of the student you wish to insert or delete. "+
+                    projectView = inflater.inflate(R.layout.dialog_box_project_planner, null);
+                    builder.setView(projectView);
+                    EditText et = (EditText) projectView.findViewById(R.id.dialogboxText);
+                    et.setText("ProjectFormActivity, a 4 edit field activity, you must have a string in each, as it will" +
+                            "create an alert error telling you to fill in the field. You must also format the date exactly, as it will" +
+                            "then judge the format against the current date, to determine if the project is late or not." +
+                            "Just fill in the fields and insert or delete_schedual_planner a project." +
                             "\n\n\nStudent: Robert Jackson Student Number: 040627795");
-
-
                     AlertDialog dialog = builder.create();
-                    dialog.setIcon(R.drawable.info);
                     dialog.show();
 
                     break;
@@ -194,11 +167,11 @@ public class StudentFormActivity extends AppCompatActivity {
 
         @Override
         protected void onProgressUpdate(Integer... progress) {
-
             try {
-                bar = (ProgressBar) findViewById(R.id.progressBarStudent);
+                bar = (ProgressBar) findViewById(R.id.progressBarProject);
                 bar.setVisibility(View.VISIBLE);
                 bar.setProgress(progress[0]);
+                SystemClock.sleep(300);
                 if (progress[0] == 100) {
                     bar.setVisibility(View.INVISIBLE);
                 }
@@ -209,7 +182,7 @@ public class StudentFormActivity extends AppCompatActivity {
 
         protected void onPostExecute(String result) {
             try {
-                Toast.makeText(getBaseContext(), "Student " + et2.getText().toString() + " " + et3.getText().toString() + " has been inserted.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Project " + et1.getText().toString() + " has been inserted.", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 Log.e("Exception Occurred ", e.toString());
             }
@@ -222,12 +195,12 @@ public class StudentFormActivity extends AppCompatActivity {
                     publishProgress(progress += 20);
                     SystemClock.sleep(300);
                 }
-                tempDb.onInsertStudent(tempDb, params[0], params[1], params[2]);
-                return "Do in backround Success";
+                tempDb.onInsertProject(tempDb, params[0], params[1], params[2], params[3]);
+                return "Insert Successful";
             } catch (Exception e) {
                 Log.e("Exception Occurred ", e.toString());
             }
-            return "Do in backround failed";
+            return "Insert Failed";
         }
     }
 
@@ -237,9 +210,10 @@ public class StudentFormActivity extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... progress) {
             try {
-                bar = (ProgressBar) findViewById(R.id.progressBarStudent);
+                bar = (ProgressBar) findViewById(R.id.progressBarProject);
                 bar.setVisibility(View.VISIBLE);
                 bar.setProgress(progress[0]);
+                SystemClock.sleep(300);
                 if (progress[0] == 100) {
                     bar.setVisibility(View.INVISIBLE);
                 }
@@ -250,12 +224,11 @@ public class StudentFormActivity extends AppCompatActivity {
 
         protected void onPostExecute(String result) {
             try {
-                Toast.makeText(getBaseContext(), "Student " + et2.getText().toString() + " " + et3.getText().toString() + " has been deleted.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Project " + et1.getText().toString() + " has been inserted.", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 Log.e("Exception Occurred ", e.toString());
             }
         }
-
 
         protected String doInBackground(String... params) {
             try {
@@ -264,13 +237,12 @@ public class StudentFormActivity extends AppCompatActivity {
                     publishProgress(progress += 20);
                     SystemClock.sleep(300);
                 }
-                tempDb.onDeleteStudent(tempDb, params[0]);
-                return "do in backround failed";
+                tempDb.onDeleteProject(tempDb, params[0]);
+                return "Delete successful";
             } catch (Exception e) {
                 Log.e("Exception Occurred ", e.toString());
             }
-
-            return "do in backround success";
+            return "Delete Failed";
         }
     }
 }

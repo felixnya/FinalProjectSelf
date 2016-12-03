@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_one"
+        android:orderInCategory="101"
+        android:title="Project Manager"
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/action_two"
+        android:orderInCategory="102"
+        android:title="Course Helper"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/about"
+        android:orderInCategory="103"
+        android:icon="@drawable/info_project_planner"
+        android:title="About"
+        app:showAsAction="always" />
+</menu>

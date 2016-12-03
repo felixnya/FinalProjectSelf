@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.robertjackson.finalproject.ProjectFormActivity">
+    tools:context="com.example.robertjackson.finalproject.ProjectFormActivity_Project_Planner">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="60dp"
-        tools:context="com.example.robertjackson.finalproject.ProjectFormActivity">
+        tools:context="com.example.robertjackson.finalproject.ProjectFormActivity_Project_Planner">
 
         <EditText
             android:id="@+id/pEt1"

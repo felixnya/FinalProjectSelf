@@ -8,9 +8,9 @@ import android.provider.BaseColumns;
  * TableData.java
  */
 
-class TableData {
+class TableData_Project_Planner {
 
-    public TableData() {
+    public TableData_Project_Planner() {
 
     }
 

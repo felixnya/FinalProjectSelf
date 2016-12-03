@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ProjectListActivity"
+            android:name=".MainMenu_Project_Planner"
             android:label="Test"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -18,14 +18,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".StartActivity_Schedual_Planner" />
+        <fragment android:name=".InputActivity_Schedual_Planner" />
+        <activity android:name=".ListViewActivity_Schedual_Planner" />
+        <activity android:name=".InputFragmentHolder"></activity>
         <activity
-            android:name=".ProjectFormActivity"
+            android:name=".ProjectFormActivity_Project_Planner"
             android:label="Test"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".StudentFormActivity"
+            android:name=".StudentFormActivity_Project_Planner"
             android:label="Test"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProjectListActivity_Project_Planner"
+            android:label="Test"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>

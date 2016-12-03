@@ -11,18 +11,18 @@ import android.support.v7.widget.Toolbar;
  * @name TestToolbar
  * Toolbar class
  */
-public class TestToolbar extends AppCompatActivity {
+public class TestToolbar_Project_Planner extends AppCompatActivity {
 
     @Override
     /**
     *@name OnCreate
     *@param savedInstanceState
      * @return void
-     * used to help establish the action bar
+     * used to help_schedual_planner establish the action bar
     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_toolbar);
+        setContentView(R.layout.activity_test_toolbar_project_planner);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
