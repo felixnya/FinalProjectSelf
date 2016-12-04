@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <!-- Tony's strings -->
+
+        <string name="app_name">Algonquin课程表</string>
+        <string name="mon">星期一</string>
+        <string name="tue">星期二</string>
+        <string name="wed">星期三</string>
+        <string name="thu">星期四</string>
+        <string name="fri">星期五</string>
+        <string name="day">日期    :</string>
+        <string name="startat">时间   :</string>
+
+        <string name="howlong">课程时长:</string>
+        <string name="onehour">1 小时</string>
+        <string name="twohour">2 小时</string>
+
+
+        <string name="coursecode">请输入课程编号:</string>
+        <string name="coursename">请输入课程名称: </string>
+        <string name="classroom">请输入教室编号: </string>
+        <string name="professor">请输入教师名称: </string>
+        <string name="addedit">增加/编辑 课程</string>
+        <string name="delete">删除课程</string>
+        <string name="rtn">返 回</string>
+        <string name="ok">确定</string>
+        <string name="cancel">取消</string>
+
+        <string name="author">作者名称</string>
+        <string name="version">版本号</string>
+        <string name="instruction">App使用说明</string>
+
+        <string name="code">课程编号 : </string>
+        <string name="name">课程名称 : </string>
+        <string name="locatoin">课程地点 :</string>
+        <string name="instructor">任课教师 :</string>
+
+
+
+    <string name="instru">"                                  使用说明:
+        1. 双击空白时间栏可以加入新的课程，双击已有课程，可以删除。单击课程，通过Toast提示条显示名称和教师。\n
+        2. 点击左上的AC图标，可以进入列表式课程表。\n
+        3. 点击扩展，再双击栏目，可以进入编辑界面。如果返回主页课程表，可以点击列表式课程表顶部的Algonguin图标。\n\n
+            作者：Tongyu Wang（王彤宇） \n
+            CST2355期末项目\n
+            Time Schedule Version 1</string>
+
+    </resources>
+
+</resources>

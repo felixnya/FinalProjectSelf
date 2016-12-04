@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Robert Jackson's strings -->
+    <string name="app_name">FinalProject</string>
+    <string name="ProjectForm">Project Form</string>
+    <string name="StudentForm">Student Form</string>
+    <string name="ProjectInsert">Insert Project</string>
+    <string name="ProjectDelete">Delete Project</string>
+    <string name="StudentInsert">Insert Student</string>
+    <string name="StudentDelete">Delete Student</string>
+    <string name="ButtonRefresh">Refresh freedom</string>
+    <string name="pHint1">ProjectName</string>
+    <string name="pHint2">CourseCode</string>
+    <string name="pHint3">ProjectStart yyyy/MM/dd</string>
+    <string name="pHint4">ProjectEnd yyyy/MM/dd</string>
+    <string name="sHint1">ProjectName</string>
+    <string name="sHint2">FirstName</string>
+    <string name="sHint3">LastName</string>
+</resources>
