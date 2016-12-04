@@ -185,11 +185,16 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
                     mainView = inflater.inflate(R.layout.dialog_box_project_planner, null);
                     builder.setView(mainView);
                     EditText et = (EditText) mainView.findViewById(R.id.dialogboxText);
-                    et.setText("Fills Expandable listView with projects currently in the database." +
-                            "After which for each, it will fill it with students whom are related to that project." +
-                            "Project Form to insert a project, Student Form to insert a student" +
-                            "and Refresh, to refresh the current activity, to populate the list." +
-                            "\n\n\nStudent: Robert Jackson Student Number: 040627795");
+                    et.setText(" Instructions:\n" +
+                            "        1. Click on each project to expand it, showing all students in\n" +
+                            "           relation with it\n\n" +
+                            "        2. Press project form button for inserting or deleting a project.\n\n" +
+                            "        3. Press student form button for inserting or deleting a student\n\n" +
+                            "        4. Press the refresh button after inserting or deleting a \n" +
+                            "           student or project. This will refresh the view\n\n"+
+                            "            Written by Robert Jackson Student Number: 040627795\"\n\n" +
+                            "            CST2355 Final Project\n\n" +
+                            "            Project Planner Ver 1.2");
 
                     AlertDialog dialog = builder.create();
                     dialog.show();

@@ -169,10 +169,13 @@ public class StudentFormActivity_Project_Planner extends AppCompatActivity {
 
                     builder.setView(studentView);
                     EditText et = (EditText) studentView.findViewById(R.id.dialogboxText);
-                    et.setText("StudentFormActivity. It is an activity with 3 edit text fields. Each of these fields has error checking" +
-                            "that you must have a string, not an empty one. As well as a non numeric for your names." +
-                            "With that being said, enter in the information of the student you wish to insert or delete_schedual_planner. "+
-                            "\n\n\nStudent: Robert Jackson Student Number: 040627795");
+                    et.setText(" Instructions:\n" +
+                            "        1. Enter in required fields above.\n\n" +
+                            "        2. Press insert button for inserting a new student.\n\n" +
+                            "        3. Press delete button for deleting a currently existing student\n\n\n" +
+                            "            Written by Robert Jackson Student Number: 040627795\"\n\n" +
+                            "            CST2355 Final Project\n\n" +
+                            "            Project Planner Ver 1.2");
 
 
                     AlertDialog dialog = builder.create();

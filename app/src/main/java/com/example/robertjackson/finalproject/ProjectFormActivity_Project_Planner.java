@@ -144,11 +144,13 @@ public class ProjectFormActivity_Project_Planner extends AppCompatActivity {
                     projectView = inflater.inflate(R.layout.dialog_box_project_planner, null);
                     builder.setView(projectView);
                     EditText et = (EditText) projectView.findViewById(R.id.dialogboxText);
-                    et.setText("ProjectFormActivity, a 4 edit field activity, you must have a string in each, as it will" +
-                            "create an alert error telling you to fill in the field. You must also format the date exactly, as it will" +
-                            "then judge the format against the current date, to determine if the project is late or not." +
-                            "Just fill in the fields and insert or delete_schedual_planner a project." +
-                            "\n\n\nStudent: Robert Jackson Student Number: 040627795");
+                    et.setText(" Instructions:\n" +
+                            "        1. Enter in required fields above.\n\n" +
+                            "        2. Press insert button for inserting a new project.\n\n" +
+                            "        3. Press delete button for deleting a currently existing project\n\n\n" +
+                            "            Written by Robert Jackson Student Number: 040627795\"\n\n" +
+                            "            CST2355 Final Project\n\n" +
+                            "            Project Planner Ver 1.2");
                     AlertDialog dialog = builder.create();
                     dialog.show();
 
