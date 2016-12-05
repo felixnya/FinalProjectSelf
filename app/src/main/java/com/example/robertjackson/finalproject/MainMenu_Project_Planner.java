@@ -18,7 +18,7 @@ public class MainMenu_Project_Planner extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu_schedual_planner);
+        setContentView(R.layout.activity_main_menu_project_planner);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Algonquin Planner");
@@ -49,6 +49,11 @@ public class MainMenu_Project_Planner extends AppCompatActivity {
                 case R.id.action_two:
                     Intent ffs2 = new Intent(getApplicationContext(), StartActivity_Schedual_Planner.class);
                     startActivity(ffs2);
+
+                    break;
+                case R.id.action_three:
+                    Intent ffs3 = new Intent(getApplicationContext(), ProfessorListActivity.class);
+                    startActivity(ffs3);
 
                     break;
                 case R.id.about:

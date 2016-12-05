@@ -35,6 +35,27 @@
             android:name=".ProjectListActivity_Project_Planner"
             android:label="Test"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ProfessorListActivity"
+            android:label="@string/title_professor_list"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".Professor"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".ProfessorDetailActivity"
+            android:label="@string/title_professor_detail"
+            android:parentActivityName=".ProfessorListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.robertjackson.finalproject.ProfessorListActivity" />
+        </activity>
 
     </application>
 
