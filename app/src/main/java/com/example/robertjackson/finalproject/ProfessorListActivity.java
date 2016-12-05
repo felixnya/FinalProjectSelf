@@ -53,16 +53,7 @@ public class ProfessorListActivity extends AppCompatActivity {
     ContentValues contentValues = new ContentValues();
     Cursor cursor;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu m){
-        try {
-            getMenuInflater().inflate(R.menu.menu_professor_activity, m);
-            return true;
-        } catch (Exception e) {
-            Log.e("Exception Occurred ", e.toString());
-        }
-        return false;
-    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,7 +154,16 @@ public class ProfessorListActivity extends AppCompatActivity {
             }
         });
     }//onCreate
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu m){
+        try {
+            getMenuInflater().inflate(R.menu.menu_professor_activity, m);
+            return true;
+        } catch (Exception e) {
+            Log.e("Exception ", e.toString());
+        }
+        return false;
+    }
     @Override
     public void onPause(){
         super.onPause();

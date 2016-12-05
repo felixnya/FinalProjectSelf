@@ -1,7 +1,5 @@
 package com.example.robertjackson.finalproject;
-/**
- * Created by Robert Jackson on Nov 24 2016.
- */
+
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
