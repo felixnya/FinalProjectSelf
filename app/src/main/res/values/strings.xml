@@ -15,7 +15,11 @@
     <string name="sHint1">ProjectName</string>
     <string name="sHint2">FirstName</string>
     <string name="sHint3">LastName</string>
-
+    <string name="TeamName1">Robert Jackson: Project Planner</string>
+    <string name="TeamName2">Matt White: Professor Helper</string>
+    <string name="TeamName3">Tongyu Wang: Schedual Planner</string>
+    <string name="TeamName4">Toan Trinh: Deadlines and Assignments</string>
+    <string name="ProjectName">Time Management Project</string>
 <!-- Tony's strings -->
 
     <string name="app_name2">Algonguin TimeSchedule</string>
