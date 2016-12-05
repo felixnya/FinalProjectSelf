@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-public class TestToolbar extends AppCompatActivity {
+public class TestToolbarProfessorActivity extends AppCompatActivity {
 
     @Override
     /**
@@ -18,7 +18,7 @@ public class TestToolbar extends AppCompatActivity {
      */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_toolbar);
+        setContentView(R.layout.activity_test_toolbar_professor_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

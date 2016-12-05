@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 /**
- * @name TestToolbar
+ * @name TestToolbarProfessorActivity
  * Toolbar class
  */
 public class TestToolbar_Project_Planner extends AppCompatActivity {

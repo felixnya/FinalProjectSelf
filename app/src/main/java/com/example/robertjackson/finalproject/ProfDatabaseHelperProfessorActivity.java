@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class ProfDatabaseHelper extends SQLiteOpenHelper {
+public class ProfDatabaseHelperProfessorActivity extends SQLiteOpenHelper {
     public static final String ACTIVITY_NAME = "ProfDB HELPER";
     private static final int VERSION_NUM = 3;
     //DATABASE VARIABLES
@@ -22,7 +22,7 @@ public class ProfDatabaseHelper extends SQLiteOpenHelper {
     //CREATE TABLE IF NOT EXISTS Messages_Table (KEY_ROWID INTEGER PRIMARY KEY AUTOINCREMENT, KEY_NAME text, KEY_CLASS text, KEY_TIME text);
     private final static String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(" + KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_NAME + " text, " + KEY_CLASS + " text, " + KEY_TIME + " text, " + KEY_DAYS + " text);";
 
-    public ProfDatabaseHelper(Context ctx){
+    public ProfDatabaseHelperProfessorActivity(Context ctx){
         super(ctx, DATABASE_NAME, null, VERSION_NUM);
     }
 

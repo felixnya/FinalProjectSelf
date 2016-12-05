@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 
 
-public class ProfessorDetailFragment extends Fragment {
+public class ProfessorDetailFragmentProfessorActivity extends Fragment {
 
     public static final String ARG_ITEM_ID = "item_id";
     private String mItem;
 
-    public ProfessorDetailFragment() {
+    public ProfessorDetailFragmentProfessorActivity() {
     }
 
     @Override
@@ -29,7 +29,7 @@ public class ProfessorDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle("Professor Details");
+                appBarLayout.setTitle("ProfessorProfessorActivity Details");
             }
         }
     }
@@ -37,7 +37,7 @@ public class ProfessorDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.professor_detail, container, false);
+        View rootView = inflater.inflate(R.layout.professor_detail_activity, container, false);
 
         if (mItem != null) {
             ((TextView) rootView.findViewById(R.id.professor_detail)).setText(mItem);

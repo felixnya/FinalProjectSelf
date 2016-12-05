@@ -49,14 +49,14 @@ public class ProfessorListActivity extends AppCompatActivity {
     ArrayList<String> profInfo = new ArrayList<>();//message history string array
 
     SQLiteDatabase ProfsDB;
-    ProfDatabaseHelper helper;
+    ProfDatabaseHelperProfessorActivity helper;
     ContentValues contentValues = new ContentValues();
     Cursor cursor;
 
     @Override
     public boolean onCreateOptionsMenu(Menu m){
         try {
-            getMenuInflater().inflate(R.menu.menu_professor, m);
+            getMenuInflater().inflate(R.menu.menu_professor_activity, m);
             return true;
         } catch (Exception e) {
             Log.e("Exception Occurred ", e.toString());
@@ -66,7 +66,7 @@ public class ProfessorListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_professor_list);
+        setContentView(R.layout.activity_professor_list_activity);
 
         //ADD PROF VARIABLES
         profName = (EditText) findViewById(R.id.profNameEdit);//text field
@@ -82,13 +82,13 @@ public class ProfessorListActivity extends AppCompatActivity {
         final ChatAdapter adapter = new ChatAdapter(this);//ChatAdapter Object
         listView.setAdapter(adapter);
         //DATABASE VARIABLES
-        helper = new ProfDatabaseHelper(this);
+        helper = new ProfDatabaseHelperProfessorActivity(this);
         ProfsDB = helper.getWritableDatabase();
         //POPULATE LISTVIEW
-        cursor = ProfsDB.query(ProfDatabaseHelper.TABLE_NAME, ProfDatabaseHelper.MESSAGE_FIELDS, null, null, null, null, null);//queries Chats for messages
+        cursor = ProfsDB.query(ProfDatabaseHelperProfessorActivity.TABLE_NAME, ProfDatabaseHelperProfessorActivity.MESSAGE_FIELDS, null, null, null, null, null);//queries Chats for messages
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {//Name, Class, Time
-            String newMessage = cursor.getString(cursor.getColumnIndex(ProfDatabaseHelper.KEY_NAME)) + "\n" + cursor.getString(cursor.getColumnIndex(ProfDatabaseHelper.KEY_CLASS)) + " - " + cursor.getString(cursor.getColumnIndex(ProfDatabaseHelper.KEY_TIME));
+            String newMessage = cursor.getString(cursor.getColumnIndex(ProfDatabaseHelperProfessorActivity.KEY_NAME)) + "\n" + cursor.getString(cursor.getColumnIndex(ProfDatabaseHelperProfessorActivity.KEY_CLASS)) + " - " + cursor.getString(cursor.getColumnIndex(ProfDatabaseHelperProfessorActivity.KEY_TIME));
             profInfo.add(newMessage);
             cursor.moveToNext();
         }//while cursor check
@@ -108,13 +108,13 @@ public class ProfessorListActivity extends AppCompatActivity {
                 //add info to ArrayList
                 profInfo.add(name);
                 //add text fields to contentValues
-                contentValues.put(ProfDatabaseHelper.KEY_NAME, name);
-                contentValues.put(ProfDatabaseHelper.KEY_CLASS, pClass);
-                contentValues.put(ProfDatabaseHelper.KEY_TIME, pTime);
-                contentValues.put(ProfDatabaseHelper.KEY_DAYS, pDays);
+                contentValues.put(ProfDatabaseHelperProfessorActivity.KEY_NAME, name);
+                contentValues.put(ProfDatabaseHelperProfessorActivity.KEY_CLASS, pClass);
+                contentValues.put(ProfDatabaseHelperProfessorActivity.KEY_TIME, pTime);
+                contentValues.put(ProfDatabaseHelperProfessorActivity.KEY_DAYS, pDays);
                 //Add contentValues to database
                 helper.getWritableDatabase();
-                ProfsDB.insert(ProfDatabaseHelper.TABLE_NAME, null, contentValues);
+                ProfsDB.insert(ProfDatabaseHelperProfessorActivity.TABLE_NAME, null, contentValues);
                 //add to listView
                 adapter.notifyDataSetChanged();
                 //reset fields
@@ -131,18 +131,18 @@ public class ProfessorListActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 try {
-                    cursor = ProfsDB.query(ProfDatabaseHelper.TABLE_NAME, ProfDatabaseHelper.MESSAGE_FIELDS, null, null, null, null, null);//queries Chats for messages
+                    cursor = ProfsDB.query(ProfDatabaseHelperProfessorActivity.TABLE_NAME, ProfDatabaseHelperProfessorActivity.MESSAGE_FIELDS, null, null, null, null, null);//queries Chats for messages
                     //Move cursor to first row, check if value of cursor matches value of profName field
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast() && cursor.toString() == name)
                     {
-                        String newMessage = cursor.getString(cursor.getColumnIndex(ProfDatabaseHelper.KEY_NAME)) +"\n"+ cursor.getString(cursor.getColumnIndex(ProfDatabaseHelper.KEY_CLASS)) + "   " + cursor.getString(cursor.getColumnIndex(ProfDatabaseHelper.KEY_TIME));
+                        String newMessage = cursor.getString(cursor.getColumnIndex(ProfDatabaseHelperProfessorActivity.KEY_NAME)) +"\n"+ cursor.getString(cursor.getColumnIndex(ProfDatabaseHelperProfessorActivity.KEY_CLASS)) + "   " + cursor.getString(cursor.getColumnIndex(ProfDatabaseHelperProfessorActivity.KEY_TIME));
                         //Update listview
                         profInfo.remove(newMessage);
                         adapter.notifyDataSetChanged();
                         //Update database
 
-                        Log.i(ACTIVITY_NAME, "deleted" + cursor.getString(cursor.getColumnIndex(ProfDatabaseHelper.KEY_NAME)));
+                        Log.i(ACTIVITY_NAME, "deleted" + cursor.getString(cursor.getColumnIndex(ProfDatabaseHelperProfessorActivity.KEY_NAME)));
                         cursor.moveToNext();
                     }//while
                 } catch (Exception e){
@@ -198,7 +198,7 @@ public class ProfessorListActivity extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.content_professor, parent, false);
+                    .inflate(R.layout.content_professor_activity, parent, false);
             return new ViewHolder(view);
         }
 
@@ -213,17 +213,17 @@ public class ProfessorListActivity extends AppCompatActivity {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
 
-                        arguments.putString(ProfessorDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                        arguments.putString(ProfessorDetailFragmentProfessorActivity.ARG_ITEM_ID, holder.mItem.id);
 
-                        ProfessorDetailFragment fragment = new ProfessorDetailFragment();
+                        ProfessorDetailFragmentProfessorActivity fragment = new ProfessorDetailFragmentProfessorActivity();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.professor_detail_container, fragment)
                                 .commit();
                     } else {
                         Context context = v.getContext();
-                        Intent intent = new Intent(context, ProfessorDetailActivity.class);
-                        intent.putExtra(ProfessorDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                        Intent intent = new Intent(context, ProfessorDetailActivityProfessorActivity.class);
+                        intent.putExtra(ProfessorDetailFragmentProfessorActivity.ARG_ITEM_ID, holder.mItem.id);
 
                         context.startActivity(intent);
                     }
@@ -283,7 +283,7 @@ public class ProfessorListActivity extends AppCompatActivity {
                 case R.id.about:
                     AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
                     LayoutInflater inflater = this.getLayoutInflater();
-                    dialogView = inflater.inflate(R.layout.dialog_box, null);
+                    dialogView = inflater.inflate(R.layout.dialog_box_professor_activity, null);
                     builder2.setView(dialogView);
                     EditText et = (EditText) dialogView.findViewById(R.id.dialogboxText);
                     et.setText("Enter the appropriate information into the text fields and apply changes using the buttons. \n\n" +
@@ -323,7 +323,7 @@ public class ProfessorListActivity extends AppCompatActivity {
             LayoutInflater inflater = ProfessorListActivity.this.getLayoutInflater();
             View result;
 
-            result = inflater.inflate(R.layout.detail_professor_fragment, null);
+            result = inflater.inflate(R.layout.detail_professor_fragment_activity, null);
 
             TextView name = (TextView)result.findViewById(R.id.detail_profName);
             final String nameText = getItem(position);
@@ -334,16 +334,16 @@ public class ProfessorListActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(ProfessorDetailFragment.ARG_ITEM_ID, nameText);
-                        ProfessorDetailFragment fragment = new ProfessorDetailFragment();
+                        arguments.putString(ProfessorDetailFragmentProfessorActivity.ARG_ITEM_ID, nameText);
+                        ProfessorDetailFragmentProfessorActivity fragment = new ProfessorDetailFragmentProfessorActivity();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.professor_detail_container, fragment)
                                 .commit();
                     } else {
                         Context context = v.getContext();
-                        Intent intent = new Intent(context, ProfessorDetailActivity.class);
-                        intent.putExtra(ProfessorDetailFragment.ARG_ITEM_ID, nameText);
+                        Intent intent = new Intent(context, ProfessorDetailActivityProfessorActivity.class);
+                        intent.putExtra(ProfessorDetailFragmentProfessorActivity.ARG_ITEM_ID, nameText);
 
                         context.startActivity(intent);
                     }

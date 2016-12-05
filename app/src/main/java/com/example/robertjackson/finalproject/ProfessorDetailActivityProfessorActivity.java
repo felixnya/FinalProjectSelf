@@ -7,12 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-public class ProfessorDetailActivity extends AppCompatActivity {
+public class ProfessorDetailActivityProfessorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_professor_detail);
+        setContentView(R.layout.activity_professor_detail_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
@@ -25,10 +25,10 @@ public class ProfessorDetailActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             Bundle arguments = new Bundle();
 
-            arguments.putString(ProfessorDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(ProfessorDetailFragment.ARG_ITEM_ID));
+            arguments.putString(ProfessorDetailFragmentProfessorActivity.ARG_ITEM_ID,
+                    getIntent().getStringExtra(ProfessorDetailFragmentProfessorActivity.ARG_ITEM_ID));
 
-            ProfessorDetailFragment fragment = new ProfessorDetailFragment();
+            ProfessorDetailFragmentProfessorActivity fragment = new ProfessorDetailFragmentProfessorActivity();
 
             fragment.setArguments(arguments);
 

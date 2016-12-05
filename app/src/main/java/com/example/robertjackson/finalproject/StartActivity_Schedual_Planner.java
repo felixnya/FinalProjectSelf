@@ -119,7 +119,7 @@ public class StartActivity_Schedual_Planner extends AppCompatActivity {
                                                 String ProfessorName = cursor.getString(3);
                                                 hour1 = hour1 + cursor.getInt(6);
                                                 //  String str1 =getString(hour1);//from +","+cursor.getInt(5)+" to "+ hour1;
-                                                str1 = tempName + "\n Professor: " + ProfessorName;
+                                                str1 = tempName + "\n ProfessorProfessorActivity: " + ProfessorName;
                                                     /*\\ + "\n" + "from " + cursor.getInt(5) + " to " + hour1;*/
                                                 runOnUiThread(new Runnable() {
                                                     @Override
