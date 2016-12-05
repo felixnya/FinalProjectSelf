@@ -21,7 +21,7 @@ public class MainMenu_Project_Planner extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu_project_planner);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Algonquin Planner");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
     }
