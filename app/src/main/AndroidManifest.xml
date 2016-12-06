@@ -22,6 +22,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <fragment android:name=".InputActivity_Schedual_Planner" />
         <activity android:name=".ListViewActivity_Schedual_Planner" />
+
         <activity android:name=".InputFragmentHolder_Schedual_Planner"></activity>
         <activity
             android:name=".ProjectFormActivity_Project_Planner"

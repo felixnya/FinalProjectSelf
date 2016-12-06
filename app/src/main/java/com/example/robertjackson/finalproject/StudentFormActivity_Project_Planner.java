@@ -101,8 +101,17 @@ public class StudentFormActivity_Project_Planner extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     et1 = (EditText) findViewById(R.id.sEt1);
+                    et2 = (EditText) findViewById(R.id.sEt2);
+                    et3 = (EditText) findViewById(R.id.sEt3);
                     if (et1.getText().toString().equals("")) {
                         et1.setError("This field can not be blank");
+                        return;
+                    } else if (et2.getText().toString().equals("")) {
+                        et2.setError("This field can not be blank");
+                        et2.setFocusable(true);
+                        return;
+                    } else if (et3.getText().toString().equals("")) {
+                        et3.setError("This field can not be blank");
                         return;
                     }
 

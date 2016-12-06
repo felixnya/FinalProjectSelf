@@ -91,11 +91,23 @@ public class ProjectFormActivity_Project_Planner extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     et1 = (EditText) findViewById(R.id.pEt1);
+                    et2 = (EditText) findViewById(R.id.pEt2);
+                    et3 = (EditText) findViewById(R.id.pEt3);
+                    et4 = (EditText) findViewById(R.id.pEt4);
                     if (et1.getText().toString().equals("")) {
                         et1.setError("This field can not be blank");
                         return;
+                    } else if (et2.getText().toString().equals("")) {
+                        et2.setError("This field can not be blank");
+                        et2.setFocusable(true);
+                        return;
+                    } else if (et3.getText().toString().equals("")) {
+                        et3.setError("This field can not be blank");
+                        return;
+                    } else if (et4.getText().toString().equals("")) {
+                        et4.setError("This field can not be blank");
+                        return;
                     }
-
                     deleteQuery dq = new deleteQuery();
                     dq.execute(et1.getText().toString());
                 } catch (Exception e) {
