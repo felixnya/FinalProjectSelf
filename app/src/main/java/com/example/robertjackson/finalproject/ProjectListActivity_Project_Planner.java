@@ -20,7 +20,6 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,6 +59,7 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     boolean exists;
+    boolean isThisATablet;
 
     /**
      * @param savedInstanceState
@@ -117,12 +117,15 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     finish();
+                    isThisATablet = findViewById(R.id.fragmentLocation) != null;
                     startActivity(getIntent());
                 } catch (Exception e) {
                     Log.e("Exception Occurred ", e.toString());
                 }
             }
         });
+
+
     }
 
     /**
@@ -315,31 +318,20 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
                                             int group_pos, long id) {
                     if (studentList.get(group_pos).size() == 0) {
                         Toast.makeText(ProjectListActivity_Project_Planner.this,
-                                "Not currently Filled",
+                                "Not currently Filled with students",
                                 Toast.LENGTH_LONG).show();
                         return true;
-                    } else {
+                    } else if(isLate.get(group_pos)){
                         Toast.makeText(ProjectListActivity_Project_Planner.this,
-                                adapter.getGroup(group_pos).toString(),
+                                "Project is late!!!",
                                 Toast.LENGTH_SHORT).show();
-
 
                         return false;
                     }
-                }
-            });
-            expandableListView.setOnChildClickListener(new OnChildClickListener() {
-
-                @Override
-                public boolean onChildClick(ExpandableListView listview, View view,
-                                            int groupPos, int childPos, long id) {
-                    Toast.makeText(
-                            ProjectListActivity_Project_Planner.this,
-                            "" + adapter.getChild(groupPos, childPos),
-                            Toast.LENGTH_SHORT).show();
                     return false;
                 }
             });
+
         } catch (Exception e) {
             Log.e("Exception Occurred ", e.toString());
         }
