@@ -1,12 +1,15 @@
 package com.example.robertjackson.finalproject;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +49,7 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
     ExpandableListView expandableListView;
     ExpandableListAdapter adapter;
     View mainView;
+    View main;
     Button b1;
     Button b2;
     Button b3;
@@ -59,7 +64,7 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     boolean exists;
-    boolean isThisATablet;
+    View vv;
 
     /**
      * @param savedInstanceState
@@ -81,7 +86,7 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
         expandableListView.setGroupIndicator(null);
         onSetItems();
         onSetListeners();
-
+        main = getCurrentFocus();
         b1 = (Button) findViewById(R.id.button6);
         b2 = (Button) findViewById(R.id.button4);
         b3 = (Button) findViewById(R.id.buttonRefresh);
@@ -90,6 +95,8 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    Snackbar.make(v, "Starting Project Form,", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                     Intent ffs = new Intent(getApplicationContext(), ProjectFormActivity_Project_Planner.class);
                     startActivity(ffs);
                     editor = sharedPreferences.edit().putBoolean("exists", true);
@@ -104,6 +111,8 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    Snackbar.make(v, "Starting Student Form,", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                     Intent ffs = new Intent(getApplicationContext(), StudentFormActivity_Project_Planner.class);
                     startActivity(ffs);
                 } catch (Exception e) {
@@ -116,12 +125,26 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+
+
+                    ProgressBar p = (ProgressBar) findViewById(R.id.progressBar3);
+                    p.setVisibility(View.VISIBLE);
+                    for (int i = 0; i < 100; i++) {
+                        SystemClock.sleep(5);
+                        p.setProgress(i);
+
+                    }
+
+
                     finish();
-                    isThisATablet = findViewById(R.id.fragmentLocation) != null;
                     startActivity(getIntent());
+
+
                 } catch (Exception e) {
                     Log.e("Exception Occurred ", e.toString());
                 }
+
+
             }
         });
 
@@ -179,7 +202,23 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
 
             switch (id) {
                 case R.id.action_one:
-                    finish();
+                    LayoutInflater inflater2 = this.getLayoutInflater();
+                    vv = inflater2.inflate(R.layout.dialog_box_two_project_planner, null);
+
+                    AlertDialog.Builder b = new AlertDialog.Builder(this);
+                    b.setView(vv);
+                    b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    b.create();
+                    b.show();
                     break;
                 case R.id.about:
 
@@ -194,7 +233,7 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
                             "        2. Press project form button for inserting or deleting a project.\n\n" +
                             "        3. Press student form button for inserting or deleting a student\n\n" +
                             "        4. Press the refresh button after inserting or deleting a \n" +
-                            "           student or project. This will refresh the view\n\n"+
+                            "           student or project. This will refresh the view\n\n" +
                             "            Written by Robert Jackson Student Number: 040627795\"\n\n" +
                             "            CST2355 Final Project\n\n" +
                             "            Project Planner Ver 1.2");
@@ -321,7 +360,7 @@ public class ProjectListActivity_Project_Planner extends AppCompatActivity {
                                 "Not currently Filled with students",
                                 Toast.LENGTH_LONG).show();
                         return true;
-                    } else if(isLate.get(group_pos)){
+                    } else if (isLate.get(group_pos)) {
                         Toast.makeText(ProjectListActivity_Project_Planner.this,
                                 "Project is late!!!",
                                 Toast.LENGTH_SHORT).show();

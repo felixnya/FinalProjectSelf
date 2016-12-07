@@ -85,7 +85,15 @@
             android:textAlignment="center"
             android:textAllCaps="false"
             android:layout_weight="1" />
-
+        <ProgressBar
+            android:visibility="invisible"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:id="@+id/progressBar3" />
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

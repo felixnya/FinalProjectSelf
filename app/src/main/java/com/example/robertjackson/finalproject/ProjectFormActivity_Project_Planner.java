@@ -1,9 +1,11 @@
 package com.example.robertjackson.finalproject;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -35,7 +37,7 @@ public class ProjectFormActivity_Project_Planner extends AppCompatActivity {
     private EditText et2;
     private EditText et3;
     private EditText et4;
-
+    View vv;
     /**
      * @param savedInstanceState
      * @return void
@@ -77,6 +79,8 @@ public class ProjectFormActivity_Project_Planner extends AppCompatActivity {
                         et4.setError("This field can not be blank");
                         return;
                     }
+                    Snackbar.make(v, "Inserting Project", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                     insertQuery iq = new insertQuery();
                     iq.execute(et1.getText().toString(), et2.getText().toString(), et3.getText().toString(), et4.getText().toString());
                 } catch (Exception e) {
@@ -108,6 +112,8 @@ public class ProjectFormActivity_Project_Planner extends AppCompatActivity {
                         et4.setError("This field can not be blank");
                         return;
                     }
+                    Snackbar.make(v, "deleting Project", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                     deleteQuery dq = new deleteQuery();
                     dq.execute(et1.getText().toString());
                 } catch (Exception e) {
@@ -147,7 +153,23 @@ public class ProjectFormActivity_Project_Planner extends AppCompatActivity {
 
             switch (id) {
                 case R.id.action_one:
-                    finish();
+                    LayoutInflater inflater2 = this.getLayoutInflater();
+                    vv = inflater2.inflate(R.layout.dialog_box_two_project_planner, null);
+
+                    AlertDialog.Builder b = new AlertDialog.Builder(this);
+                    b.setView(vv);
+                    b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    b.create();
+                    b.show();
 
                     break;
                 case R.id.about:

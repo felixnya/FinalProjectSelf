@@ -1,6 +1,7 @@
 package com.example.robertjackson.finalproject;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -28,11 +29,10 @@ import android.widget.Toast;
  * Student form activity
  */
 public class StudentFormActivity_Project_Planner extends AppCompatActivity {
+    View vv;
     private View studentView;
     private Context ctx = this;
     private Database_Project_Planner tempDb = new Database_Project_Planner(ctx);
-
-
     private EditText et1, et2, et3;
     private Button b1, b2;
 
@@ -168,7 +168,23 @@ public class StudentFormActivity_Project_Planner extends AppCompatActivity {
 
             switch (id) {
                 case R.id.action_one:
-                    finish();
+                    LayoutInflater inflater2 = this.getLayoutInflater();
+                    vv = inflater2.inflate(R.layout.dialog_box_two_project_planner, null);
+
+                    AlertDialog.Builder b = new AlertDialog.Builder(this);
+                    b.setView(vv);
+                    b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    b.create();
+                    b.show();
 
                     break;
                 case R.id.about:

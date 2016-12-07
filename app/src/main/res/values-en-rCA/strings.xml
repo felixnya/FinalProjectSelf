@@ -88,5 +88,15 @@
     <string name="add_button_text">ADD</string>
     <string name="delete_button_text">DELETE</string>
     <string name="cancel_button_text">CANCEL</string>
+
+    <!-- Toans Strings -->
+    <string name="app_name4">Final_Project</string>
+    <string name="dialog_button_add">Add</string>
+    <string name="dialog_button_cancel">Cancel</string>
+    <string name="taskHint">Enter your task.</string>
+    <string name="dateHint">Due date (mm/dd).</string>
+    <string name="dialog_button_yes">YES</string>
+    <string name="dialog_button_no">NO</string>
+
 </resources>
 

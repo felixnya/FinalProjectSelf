@@ -4,13 +4,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/agenda"
+        android:label="Time Management Project"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainMenu_Project_Planner"
-            android:label="Test"
+            android:label="Time Management Project"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
