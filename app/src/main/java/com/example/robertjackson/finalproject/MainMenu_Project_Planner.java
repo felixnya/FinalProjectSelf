@@ -56,6 +56,11 @@ public class MainMenu_Project_Planner extends AppCompatActivity {
                     startActivity(ffs3);
 
                     break;
+                case R.id.action_four:
+                    Intent ffs4 = new Intent(getApplicationContext(), MainActivity_Deadlines.class);
+                    startActivity(ffs4);
+
+                    break;
                 case R.id.about:
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);

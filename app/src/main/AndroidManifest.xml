@@ -41,7 +41,7 @@
             android:label="@string/title_professor_list"
             >
         </activity>
-
+        <activity android:name=".MainActivity_Deadlines"/>
         <activity
             android:name=".ProfessorProfessorActivity"
             android:label="@string/app_name"

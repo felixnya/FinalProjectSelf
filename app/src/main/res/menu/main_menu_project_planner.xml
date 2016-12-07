@@ -22,6 +22,12 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/action_four"
+        android:orderInCategory="103"
+        android:title="Schedual Planner"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/about"
         android:orderInCategory="104"
         android:icon="@drawable/info_project_planner"
